@@ -90,6 +90,7 @@
 		<dependency>
 			<groupId>io.micronaut.configuration</groupId>
 			<artifactId>micronaut-hibernate-jpa</artifactId>
+			
 		</dependency>
 		<dependency>
 			<groupId>io.micronaut.configuration</groupId>
@@ -101,6 +102,26 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.2.6</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.micronaut.data</groupId>
+			<artifactId>micronaut-data-model</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.micronaut.data</groupId>
+			<artifactId>micronaut-data-runtime</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<plugins>
