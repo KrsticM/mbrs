@@ -2,8 +2,10 @@ package controller;
 
 import javax.inject.Inject;
 
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.Put;
 import model.Category;
 import service.CategoryService;
 
@@ -17,25 +19,24 @@ public class CategoryController {
 //    }
 	
 	@Inject
-	private CategoryService categoryService;
-	
+	private CategoryService categoryService;	
 	
     @Get("/{id}") 
     public Category getCategory(Long id) {
-    	System.out.println("usao u kontroler");
 		Category category =  categoryService.getCategory(id);
-		System.out.println(category);
 		return category;           
     }
    
-//    @Get("/")
-//    public Iterable<Category> getCategories() {
-//    	Iterable<Category> ret = categoryService.getCategories();
-//    	for(Category cat: ret) {
-//    		System.out.println(cat.getName());
-//    	}
-//    	return ret;
-//    }
+    @Get("/")
+    public Iterable<Category> getCategories() {
+    	Iterable<Category> ret = categoryService.getCategories();
+    	return ret;
+    }
     
+    @Put("/{id}")
+    public Category editCategory(Long id, @Body Category dto) {
+    	Category ret = categoryService.editCategory(id, dto);
+    	return ret;    	
+    }
     
 }
