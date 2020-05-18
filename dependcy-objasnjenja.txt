@@ -1,0 +1,46 @@
+MICORNAUT napomene:
+1. Kreiranje novog projekta
+mn create-app naziv --build=maven
+
+2. Dependecy za konekciju na bazu
+	a. Drajver za bazu
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>42.2.6</version>
+	</dependency>
+	b. Connection pool za bazu
+	<dependency>
+		<groupId>io.micronaut.configuration</groupId>
+		<artifactId>micronaut-jdbc-hikari</artifactId>
+		<scope>runtime</scope>
+	</dependency>
+
+3. LOMBOK
+	a. dependecy
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.12</version>
+		<scope>provided</scope>
+	</dependency>
+	b. procesor(dodaje se kod annotationProcessorPaths, pri čemu obavezno mora prvi)
+	<path>
+    	<groupId>org.projectlombok</groupId>
+    	<artifactId>lombok</artifactId>
+    	<version>1.18.0</version>
+    </path>
+
+4. Repozitorijumi
+	a. dependecy
+	<dependency>
+	    <groupId>io.micronaut.data</groupId>
+	    <artifactId>micronaut-data-hibernate-jpa</artifactId>
+	    <version>1.0.2</version>
+	</dependency>
+	b. procesor
+	<path>
+        <groupId>io.micronaut.data</groupId>
+        <artifactId>micronaut-data-processor</artifactId>
+        <version>1.0.2</version>
+    </path>

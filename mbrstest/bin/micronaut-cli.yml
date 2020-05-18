@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: ftn.uns.ac.rs
+---
+testFramework: junit
+sourceLanguage: java
