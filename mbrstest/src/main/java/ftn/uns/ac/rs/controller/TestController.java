@@ -14,10 +14,10 @@ public class TestController {
         return "Hello World"; 
     }
 	
-	@Get(value = "lombok")
-    @Produces(MediaType.TEXT_PLAIN) 
-    public String testLombok() {
-        Category cat = new Category(1, "Milica");
-        return cat.getName();        
-    }
+//	@Get(value = "lombok")
+//    @Produces(MediaType.TEXT_PLAIN) 
+//    public String testLombok() {
+//        Category cat = new Category(1, "Milica");
+//        return cat.getName();        
+//    }
 }

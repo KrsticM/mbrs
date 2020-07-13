@@ -2,9 +2,12 @@ package ftn.uns.ac.rs.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,15 +18,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "category")
+@Table(name = "restaurant")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Category {
+public class Restaurant {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_generator")
-	@SequenceGenerator(name = "category_generator", sequenceName = "category_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurant_generator")
+	@SequenceGenerator(name = "restaurant_generator", sequenceName = "restaurant_seq")
 	@EqualsAndHashCode.Include
 	@Getter
 	@Setter
@@ -34,4 +37,10 @@ public class Category {
 	@Setter
     private String name;    
     
-}
+    @ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(nullable = false)
+    @Getter
+    @Setter
+	private Category category;
+    
+  }

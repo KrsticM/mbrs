@@ -21,9 +21,9 @@ public class CategoryService{
 	}
 		
 	public Category findOne(Integer id){
-		Optional<Category> optionalUser = repo.findById(id);
-		if (optionalUser.isPresent()) {
-			return optionalUser.get();
+		Optional<Category> optional = repo.findById(id);
+		if (optional.isPresent()) {
+			return optional.get();
 		}
 		return null;
 	}

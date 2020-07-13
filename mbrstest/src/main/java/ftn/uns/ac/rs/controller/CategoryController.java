@@ -9,6 +9,7 @@ import ftn.uns.ac.rs.service.CategoryService;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
@@ -25,13 +26,11 @@ public class CategoryController {
 
 	@Get("/{id}")
 	public Category getCategory(Integer id) {
-
 		return categoryService.findOne(id);
 	}
 
 	@Post
 	public Category saveCategory(@Body Category category) {
-
 		return categoryService.save(category);
 	}
 
@@ -40,4 +39,10 @@ public class CategoryController {
 			throws IllegalAccessException, InvocationTargetException {
 		return categoryService.update(id, category);
 	}
+	
+	@Delete("/{id}")
+	public void deleteCategory(Integer id) {
+		categoryService.delete(id);
+	}
+	
 }
