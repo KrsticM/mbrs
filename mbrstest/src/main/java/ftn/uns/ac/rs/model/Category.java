@@ -14,24 +14,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "category")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@Table(name = "category")
 public class Category {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_generator")
-	@SequenceGenerator(name = "category_generator", sequenceName = "category_seq")
 	@EqualsAndHashCode.Include
 	@Getter
 	@Setter
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_generator")
+	@SequenceGenerator(name = "category_generator", sequenceName = "category_seq")	
     private Integer id;
 
-    @Column(name = "name", nullable = false, unique = true)
     @Getter
 	@Setter
+    @Column(name = "name", nullable = false, unique = true)
     private String name;    
     
 }

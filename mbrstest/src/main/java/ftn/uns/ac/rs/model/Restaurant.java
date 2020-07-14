@@ -1,5 +1,8 @@
 package ftn.uns.ac.rs.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,30 +21,35 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "restaurant")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Restaurant {
+@Entity
+@Table(name = "restaurant")
+public class Restaurant{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurant_generator")
-	@SequenceGenerator(name = "restaurant_generator", sequenceName = "restaurant_seq")
 	@EqualsAndHashCode.Include
 	@Getter
 	@Setter
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurant_generator")
+	@SequenceGenerator(name = "restaurant_generator", sequenceName = "restaurant_seq")	
     private Integer id;
 
-    @Column(name = "name", nullable = false, unique = true)
     @Getter
 	@Setter
+    @Column(name = "name", nullable = false, unique = true)
     private String name;    
     
-    @ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false)
     @Getter
     @Setter
+    @ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(nullable = false)
 	private Category category;
+    
+    @Getter
+	@Setter
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER, orphanRemoval = true)
+	private Set<Product> products = new HashSet<Product>();
     
   }

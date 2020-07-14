@@ -1,8 +1,6 @@
 package ftn.uns.ac.rs.dto;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import ftn.uns.ac.rs.model.ProductType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RestaurantDTO {
+public class ProductDTO {
 	private Integer id;	
-	private String name;	
-	private CategoryDTO category;
-	private Set<ProductDTO> products = new HashSet<ProductDTO>();
+	private String name;
+	private ProductType type;
+	private RestaurantDTO restaurant;	
 }

@@ -1,10 +1,10 @@
 package ftn.uns.ac.rs.service;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.persistence.EntityNotFoundException;
 
 import ftn.uns.ac.rs.model.Category;
 import ftn.uns.ac.rs.repository.CategoryRepository;
@@ -25,17 +25,17 @@ public class CategoryService{
 		if (optional.isPresent()) {
 			return optional.get();
 		}
-		return null;
+		throw new EntityNotFoundException("No row with the given identifier exists: [" + Category.class.getName() + ":" + id +"]");
 	}
 	
 	public Category save(Category entity) {
 		return repo.update(entity);
 	}
 	
-	public Category update(Integer id, Category newEntity) throws IllegalAccessException, InvocationTargetException{
+	public Category update(Integer id, Category newEntity){
 		Category entity = findOne(id);
-		newEntity.setId(entity.getId());
-		return save(newEntity);
+		entity.setName(newEntity.getName());
+		return save(entity);
 	}
 		
 	public void delete(Integer id){

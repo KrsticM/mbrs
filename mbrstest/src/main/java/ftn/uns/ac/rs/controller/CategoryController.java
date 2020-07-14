@@ -1,11 +1,12 @@
 package ftn.uns.ac.rs.controller;
 
-import java.lang.reflect.InvocationTargetException;
-
 import javax.inject.Inject;
 
+import ftn.uns.ac.rs.dto.CategoryDTO;
+import ftn.uns.ac.rs.mapper.CategoryMapper;
 import ftn.uns.ac.rs.model.Category;
 import ftn.uns.ac.rs.service.CategoryService;
+import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -20,29 +21,28 @@ public class CategoryController {
 	private CategoryService categoryService;
 
 	@Get
-	public Iterable<Category> getCategories(Pageable pageable) {
-		return categoryService.findAll(pageable);
+	public Page<CategoryDTO> getAll(Pageable pageable) {
+		return categoryService.findAll(pageable).map(CategoryMapper::fullCategoryDTO);
 	}
 
 	@Get("/{id}")
-	public Category getCategory(Integer id) {
-		return categoryService.findOne(id);
+	public CategoryDTO getOne(Integer id){
+		return CategoryMapper.fullCategoryDTO(categoryService.findOne(id));
 	}
 
 	@Post
-	public Category saveCategory(@Body Category category) {
-		return categoryService.save(category);
+	public CategoryDTO save(@Body Category category) {
+		return CategoryMapper.fullCategoryDTO(categoryService.save(category));
 	}
 
 	@Put("/{id}")
-	public Category editCategory(Integer id, @Body Category category)
-			throws IllegalAccessException, InvocationTargetException {
-		return categoryService.update(id, category);
+	public CategoryDTO edit(Integer id, @Body Category category){
+		return CategoryMapper.fullCategoryDTO(categoryService.update(id, category));
 	}
-	
+
 	@Delete("/{id}")
-	public void deleteCategory(Integer id) {
+	public void delete(Integer id){
 		categoryService.delete(id);
 	}
-	
+
 }
