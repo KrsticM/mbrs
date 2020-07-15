@@ -43,7 +43,7 @@ public class Product{
 
 	@Getter
 	@Setter
-	@Column(name = "name", nullable = false, unique = true)
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	@Getter

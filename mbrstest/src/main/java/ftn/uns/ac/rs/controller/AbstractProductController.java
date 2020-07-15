@@ -5,11 +5,10 @@ import javax.inject.Inject;
 import ftn.uns.ac.rs.dto.ProductDTO;
 import ftn.uns.ac.rs.mapper.ProductMapper;
 import ftn.uns.ac.rs.model.Product;
-import ftn.uns.ac.rs.service.ProductService;
+import hand.service.ProductService;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.annotation.Body;
-import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
@@ -17,12 +16,17 @@ import io.micronaut.http.annotation.Put;
 
 /*
  * Svuda se mapira na full DTO objekat.
+ * Anotacija Controller mora biti iznad konkretne klase, da bi se kontroler registrovao.
  */
-
-@Controller("/product")
-public class ProductController {
+public abstract class AbstractProductController {
+	/*
+	 * Striktno mora protected da bi videla konkretna klasa.
+	 * 
+	 * Generalno bi ovde moglo da stoji Abstract, ali ona korisnik neće videti svoje
+	 * metode koje doda, bez da uradi castovanje.
+	 */
 	@Inject
-	private ProductService productService;
+	protected ProductService productService;
 
 	@Get
 	public Page<ProductDTO> getAll(Pageable pageable) {

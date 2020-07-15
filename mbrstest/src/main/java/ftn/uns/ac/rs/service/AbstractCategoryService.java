@@ -3,16 +3,20 @@ package ftn.uns.ac.rs.service;
 import java.util.Optional;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import javax.persistence.EntityNotFoundException;
 
 import ftn.uns.ac.rs.model.Category;
-import ftn.uns.ac.rs.repository.CategoryRepository;
+import hand.repository.CategoryRepository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 
-@Singleton
-public class CategoryService{
+/*
+ * Singleton anotacija mora iznad konkretnih, inače ne radi inject.
+ */
+public abstract class AbstractCategoryService{
+	/*
+	 * Konkretni repo, da bi korisnik video svoje dodatne metode bez castovanja.
+	 */
 	@Inject
 	protected CategoryRepository repo;
 	

@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import ftn.uns.ac.rs.dto.RestaurantDTO;
 import ftn.uns.ac.rs.mapper.RestaurantMapper;
 import ftn.uns.ac.rs.model.Restaurant;
-import ftn.uns.ac.rs.service.RestaurantService;
+import hand.service.RestaurantService;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.annotation.Body;
@@ -17,13 +17,19 @@ import io.micronaut.http.annotation.Put;
 
 /*
  * Svuda se mapira na full DTO objekat.
+ * Anotacija Controller mora biti iznad konkretne klase, da bi se kontroler registrovao.
  */
-
 @Controller("/restaurant")
-public class RestaurantController {
+public abstract class AbstractRestaurantController {
 	
+	/*
+	 * Striktno mora protected da bi videla konkretna klasa.
+	 * 
+	 * Generalno bi ovde moglo da stoji Abstract, ali ona korisnik neće videti svoje
+	 * metode koje doda, bez da uradi castovanje.
+	 */
 	@Inject
-	private RestaurantService restaurantService;
+	protected RestaurantService restaurantService;
 	
 	@Get
 	public Page<RestaurantDTO> getAll(Pageable pageable) {

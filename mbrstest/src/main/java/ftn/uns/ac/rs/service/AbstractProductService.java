@@ -3,16 +3,20 @@ package ftn.uns.ac.rs.service;
 import java.util.Optional;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import javax.persistence.EntityNotFoundException;
 
 import ftn.uns.ac.rs.model.Product;
-import ftn.uns.ac.rs.repository.ProductRepository;
+import hand.repository.ProductRepository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 
-@Singleton
-public class ProductService {
+/*
+ * Singleton anotacija mora iznad konkretnih, inače ne radi inject.
+ */
+public abstract class AbstractProductService {
+	/*
+	 * Konkretni repo, da bi korisnik video svoje dodatne metode bez castovanja.
+	 */
 	@Inject
 	protected ProductRepository repo;
 	

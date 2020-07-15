@@ -3,17 +3,20 @@ package ftn.uns.ac.rs.service;
 import java.util.Optional;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import javax.persistence.EntityNotFoundException;
 
 import ftn.uns.ac.rs.model.Restaurant;
-import ftn.uns.ac.rs.repository.RestaurantRepository;
+import hand.repository.RestaurantRepository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 
-@Singleton
-public class RestaurantService {
-
+/*
+ * Singleton anotacija mora iznad konkretnih, inače ne radi inject.
+ */
+public abstract class AbstractRestaurantService {
+	/*
+	 * Konkretni repo, da bi korisnik video svoje dodatne metode bez castovanja.
+	 */
 	@Inject
 	protected RestaurantRepository repo;
 
