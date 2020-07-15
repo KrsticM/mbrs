@@ -21,6 +21,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/*
+ * Geteri i seteri su iznad polja kako bismo mogli staviti u modelu da se za svako
+ * polje bira hoce li getter i setter.
+ * 
+ * Equals i hash include ide samo iznad ključa.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)

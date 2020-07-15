@@ -19,7 +19,11 @@ public class CategoryService{
 	public Page<Category> findAll(Pageable pageable) {
 		return repo.findAll(pageable);
 	}
-		
+	
+	/*
+	 * Ova exception ne mora da ima throw, ali svakako ce ga obraditi handler.
+	 * Isti se baci i ako, na primer, restoranu postavimo kategoriju koja ne postoji.
+	 */
 	public Category findOne(Integer id){
 		Optional<Category> optional = repo.findById(id);
 		if (optional.isPresent()) {
@@ -32,6 +36,9 @@ public class CategoryService{
 		return repo.update(entity);
 	}
 	
+	/*
+	 * Ovde se setuju sva polja koja imaju setter i koja nisu id ili liste.
+	 */
 	public Category update(Integer id, Category newEntity){
 		Category entity = findOne(id);
 		entity.setName(newEntity.getName());

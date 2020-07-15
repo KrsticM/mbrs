@@ -21,6 +21,10 @@ public class RestaurantService {
 		return repo.findAll(pageable);
 	}
 
+	/*
+	 * Ova exception ne mora da ima throw, ali svakako ce ga obraditi handler.
+	 * Isti se baci i ako, na primer, restoranu postavimo kategoriju koja ne postoji.
+	 */
 	public Restaurant findOne(Integer id){
 		Optional<Restaurant> optional = repo.findById(id);
 		if (optional.isPresent()) {
@@ -33,6 +37,9 @@ public class RestaurantService {
 		return repo.update(entity);
 	}
 	
+	/*
+	 * Ovde se setuju sva polja koja imaju setter i koja nisu id ili liste.
+	 */
 	public Restaurant update(Integer id, Restaurant newEntity){
 		Restaurant entity = findOne(id);
 		entity.setName(newEntity.getName());

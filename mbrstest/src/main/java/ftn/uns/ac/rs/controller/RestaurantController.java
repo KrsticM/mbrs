@@ -15,6 +15,10 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 
+/*
+ * Svuda se mapira na full DTO objekat.
+ */
+
 @Controller("/restaurant")
 public class RestaurantController {
 	

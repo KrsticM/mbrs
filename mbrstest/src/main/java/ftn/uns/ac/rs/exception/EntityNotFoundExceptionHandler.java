@@ -9,6 +9,10 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.server.exceptions.ExceptionHandler;
 
+
+/*
+ * Ova klasa ide kakva jeste.
+ */
 @SuppressWarnings("rawtypes")
 @Produces
 @Singleton 

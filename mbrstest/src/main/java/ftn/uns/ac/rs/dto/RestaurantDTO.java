@@ -13,6 +13,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RestaurantDTO {
+	/*
+	 * Ove idu isključivi pola koja imaju getter-e.
+	 * Sve što nije porst tip, menja se njegovim DTO objektom.
+	 */
 	private Integer id;	
 	private String name;	
 	private CategoryDTO category;
