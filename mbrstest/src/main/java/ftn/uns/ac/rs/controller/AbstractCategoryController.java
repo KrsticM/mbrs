@@ -2,9 +2,9 @@ package ftn.uns.ac.rs.controller;
 
 import javax.inject.Inject;
 
-import ftn.uns.ac.rs.dto.CategoryDTO;
-import ftn.uns.ac.rs.mapper.CategoryMapper;
+import ftn.uns.ac.rs.dto.AbstractCategoryDTO;
 import ftn.uns.ac.rs.model.Category;
+import hand.mapper.CategoryMapper;
 import hand.service.CategoryService;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
@@ -29,23 +29,23 @@ public abstract class AbstractCategoryController {
 	protected CategoryService categoryService;
 	
 	@Get
-	public Page<CategoryDTO> getAll(Pageable pageable) {
-		return categoryService.findAll(pageable).map(CategoryMapper::fullCategoryDTO);
+	public Page<AbstractCategoryDTO> getAll(Pageable pageable) {
+		return categoryService.findAll(pageable).map(CategoryMapper::fullConversion);
 	}
 
 	@Get("/{id}")
-	public CategoryDTO getOne(Integer id){
-		return CategoryMapper.fullCategoryDTO(categoryService.findOne(id));
+	public AbstractCategoryDTO getOne(Integer id){
+		return CategoryMapper.fullConversion(categoryService.findOne(id));
 	}
 
 	@Post
-	public CategoryDTO save(@Body Category category) {
-		return CategoryMapper.fullCategoryDTO(categoryService.save(category));
+	public AbstractCategoryDTO save(@Body Category category) {
+		return CategoryMapper.fullConversion(categoryService.save(category));
 	}
 
 	@Put("/{id}")
-	public CategoryDTO edit(Integer id, @Body Category category){
-		return CategoryMapper.fullCategoryDTO(categoryService.update(id, category));
+	public AbstractCategoryDTO edit(Integer id, @Body Category category){
+		return CategoryMapper.fullConversion(categoryService.update(id, category));
 	}
 
 	@Delete("/{id}")

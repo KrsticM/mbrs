@@ -49,7 +49,7 @@ public class Restaurant{
     
     @Getter
     @Setter
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER )
 	@JoinColumn(nullable = false)
 	private Category category;
     

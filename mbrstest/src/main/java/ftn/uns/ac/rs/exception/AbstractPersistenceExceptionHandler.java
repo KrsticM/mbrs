@@ -1,12 +1,9 @@
 package ftn.uns.ac.rs.exception;
 
-import javax.inject.Singleton;
 import javax.persistence.PersistenceException;
 
-import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.server.exceptions.ExceptionHandler;
 
 /*
@@ -14,10 +11,7 @@ import io.micronaut.http.server.exceptions.ExceptionHandler;
  * Ona handla narusena ogranicenja nad bazom - unique i nullable.
  */
 @SuppressWarnings("rawtypes")
-@Produces
-@Singleton 
-@Requires(classes = {PersistenceException.class, ExceptionHandler.class})
-public class PersistenceExceptionHandler implements ExceptionHandler<PersistenceException, HttpResponse>{
+public abstract class AbstractPersistenceExceptionHandler implements ExceptionHandler<PersistenceException, HttpResponse>{
 
 	@Override
 	public HttpResponse handle(HttpRequest request, PersistenceException exception) {		

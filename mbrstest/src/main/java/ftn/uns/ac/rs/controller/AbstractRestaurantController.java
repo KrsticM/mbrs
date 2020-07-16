@@ -2,9 +2,9 @@ package ftn.uns.ac.rs.controller;
 
 import javax.inject.Inject;
 
-import ftn.uns.ac.rs.dto.RestaurantDTO;
-import ftn.uns.ac.rs.mapper.RestaurantMapper;
+import ftn.uns.ac.rs.dto.AbstractRestaurantDTO;
 import ftn.uns.ac.rs.model.Restaurant;
+import hand.mapper.RestaurantMapper;
 import hand.service.RestaurantService;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
@@ -32,23 +32,23 @@ public abstract class AbstractRestaurantController {
 	protected RestaurantService restaurantService;
 	
 	@Get
-	public Page<RestaurantDTO> getAll(Pageable pageable) {
-		return restaurantService.findAll(pageable).map(RestaurantMapper::fullRestaurantDTO);		
+	public Page<AbstractRestaurantDTO> getAll(Pageable pageable) {
+		return restaurantService.findAll(pageable).map(RestaurantMapper::fullConversion);		
 	}
 	
 	@Get("/{id}")
-	public RestaurantDTO getOne(Integer id){
-		return RestaurantMapper.fullRestaurantDTO(restaurantService.findOne(id));
+	public AbstractRestaurantDTO getOne(Integer id){
+		return RestaurantMapper.fullConversion(restaurantService.findOne(id));
 	}
 
 	@Post
-	public RestaurantDTO save(@Body Restaurant restaurant) {
-		return RestaurantMapper.fullRestaurantDTO(restaurantService.save(restaurant));
+	public AbstractRestaurantDTO save(@Body Restaurant restaurant) {
+		return RestaurantMapper.fullConversion(restaurantService.save(restaurant));
 	}
 	
 	@Put("/{id}")
-	public RestaurantDTO edit(Integer id, @Body Restaurant restaurant){
-		return RestaurantMapper.fullRestaurantDTO(restaurantService.update(id, restaurant));
+	public AbstractRestaurantDTO edit(Integer id, @Body Restaurant restaurant){
+		return RestaurantMapper.fullConversion(restaurantService.update(id, restaurant));
 	}
 	
 	@Delete("/{id}")

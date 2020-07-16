@@ -2,9 +2,9 @@ package ftn.uns.ac.rs.controller;
 
 import javax.inject.Inject;
 
-import ftn.uns.ac.rs.dto.ProductDTO;
-import ftn.uns.ac.rs.mapper.ProductMapper;
+import ftn.uns.ac.rs.dto.AbstractProductDTO;
 import ftn.uns.ac.rs.model.Product;
+import hand.mapper.ProductMapper;
 import hand.service.ProductService;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
@@ -29,23 +29,23 @@ public abstract class AbstractProductController {
 	protected ProductService productService;
 
 	@Get
-	public Page<ProductDTO> getAll(Pageable pageable) {
-		return productService.findAll(pageable).map(ProductMapper::fullProductDTO);
+	public Page<AbstractProductDTO> getAll(Pageable pageable) {
+		return productService.findAll(pageable).map(ProductMapper::fullConversion);
 	}
 
 	@Get("/{id}")
-	public ProductDTO getOne(Integer id){
-		return ProductMapper.fullProductDTO(productService.findOne(id));
+	public AbstractProductDTO getOne(Integer id){
+		return ProductMapper.fullConversion(productService.findOne(id));
 	}
 
 	@Post
-	public ProductDTO save(@Body Product product) {
-		return ProductMapper.fullProductDTO(productService.save(product));
+	public AbstractProductDTO save(@Body Product product) {
+		return ProductMapper.fullConversion(productService.save(product));
 	}
 
 	@Put("/{id}")
-	public ProductDTO edit(Integer id, @Body Product product){
-		return ProductMapper.fullProductDTO(productService.update(id, product));
+	public AbstractProductDTO edit(Integer id, @Body Product product){
+		return ProductMapper.fullConversion(productService.update(id, product));
 	}
 
 	@Delete("/{id}")
