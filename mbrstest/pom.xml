@@ -110,6 +110,11 @@
 			<artifactId>micronaut-data-hibernate-jpa</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>io.micronaut</groupId>
+		    <artifactId>micronaut-discovery-client</artifactId>
+		</dependency>
 
 	</dependencies>
 	<build>

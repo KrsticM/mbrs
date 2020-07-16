@@ -1,6 +1,6 @@
 package hand.controller;
 
-import ftn.uns.ac.rs.controller.AbstractRestaurantController;
+import generated.controller.AbstractRestaurantController;
 import io.micronaut.http.annotation.Controller;
 
 @Controller("/restaurant")

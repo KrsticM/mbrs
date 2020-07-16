@@ -1,7 +1,13 @@
 package hand.mapper;
 
-import ftn.uns.ac.rs.mapper.AbstractProductMapper;
+import generated.mapper.AbstractMapperCatalogue;
+import generated.mapper.AbstractProductMapper;
+
 
 public class ProductMapper extends AbstractProductMapper {
+
+	public ProductMapper(AbstractMapperCatalogue mapperCatalogue) {
+		super(mapperCatalogue);		
+	}
 
 }

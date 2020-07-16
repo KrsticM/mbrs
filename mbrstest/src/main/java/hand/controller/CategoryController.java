@@ -1,6 +1,6 @@
 package hand.controller;
 
-import ftn.uns.ac.rs.controller.AbstractCategoryController;
+import generated.controller.AbstractCategoryController;
 import io.micronaut.http.annotation.Controller;
 
 

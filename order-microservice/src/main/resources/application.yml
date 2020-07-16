@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: order-microservice
+  server:
+    port: 8081
+
+eureka:
+  client:
+    registration:
+      enabled: true
+    defaultZone: "${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}"
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/mbrs?ssl=false
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true

@@ -1,6 +1,6 @@
 package hand.dto;
 
-import ftn.uns.ac.rs.dto.AbstractRestaurantDTO;
+import generated.dto.AbstractRestaurantDTO;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

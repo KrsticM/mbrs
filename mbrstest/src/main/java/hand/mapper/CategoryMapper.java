@@ -1,7 +1,12 @@
 package hand.mapper;
 
-import ftn.uns.ac.rs.mapper.AbstractCategoryMapper;
+import generated.mapper.AbstractCategoryMapper;
+import generated.mapper.AbstractMapperCatalogue;
 
 public class CategoryMapper extends AbstractCategoryMapper {
+
+	public CategoryMapper(AbstractMapperCatalogue mapperCatalogue) {
+		super(mapperCatalogue);
+	}
 
 }

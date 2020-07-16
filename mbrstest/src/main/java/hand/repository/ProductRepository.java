@@ -1,6 +1,6 @@
 package hand.repository;
 
-import ftn.uns.ac.rs.repository.AbstractProductRepository;
+import generated.repository.AbstractProductRepository;
 import io.micronaut.data.annotation.Repository;
 
 @Repository
