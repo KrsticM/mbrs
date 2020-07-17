@@ -23,7 +23,7 @@ public class AbstractOrderMapper {
 	public AbstractOrderDTO fullConversion(Order entity) {
 		AbstractOrderDTO ret = simpleConversion(entity);
 		ret.setItems(entity.getItems().stream().map(el -> mapperCatalogue.getOrderItemMapper().simpleConversion(el)).collect(Collectors.toSet()));
-		ret.setRestaurant(mapperCatalogue.restaurantFeignClient.getOne(entity.getRestaurant()));
+		ret.setRestaurant(mapperCatalogue.getRestaurantFeignClient().getOne(entity.getRestaurant()));
 		return ret;
 	}
 	
