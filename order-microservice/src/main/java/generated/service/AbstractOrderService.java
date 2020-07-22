@@ -56,7 +56,7 @@ public abstract class AbstractOrderService {
 	public Order update(Integer id, Order newEntity){
 		Order entity = findOne(id);
 		entity.setDateOrdered(newEntity.getDateOrdered());		
-		entity.setRestaurant(newEntity.getId());
+		entity.setRestaurant(newEntity.getRestaurant());
 		return save(entity);
 	}
 		

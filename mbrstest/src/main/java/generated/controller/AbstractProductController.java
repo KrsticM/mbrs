@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import generated.dto.AbstractProductDTO;
 import generated.model.Product;
-import hand.mapper.ProductMapper;
+import hand.mapper.MapperCatalogue;
 import hand.service.ProductService;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
@@ -29,26 +29,26 @@ public abstract class AbstractProductController {
 	protected ProductService productService;
 	
 	@Inject
-	protected ProductMapper productMapper;
+	protected MapperCatalogue mapperCatalogue;
 
 	@Get
 	public Page<AbstractProductDTO> getAll(Pageable pageable) {
-		return productService.findAll(pageable).map(el -> productMapper.simpleConversion(el));
+		return productService.findAll(pageable).map(el -> mapperCatalogue.getProductMapper().simpleConversion(el));
 	}
 
 	@Get("/{id}")
 	public AbstractProductDTO getOne(Integer id){
-		return productMapper.fullConversion(productService.findOne(id));
+		return mapperCatalogue.getProductMapper().fullConversion(productService.findOne(id));
 	}
 
 	@Post
 	public AbstractProductDTO save(@Body Product product) {
-		return productMapper.fullConversion(productService.save(product));
+		return mapperCatalogue.getProductMapper().fullConversion(productService.save(product));
 	}
 
 	@Put("/{id}")
 	public AbstractProductDTO edit(Integer id, @Body Product product){
-		return productMapper.fullConversion(productService.update(id, product));
+		return mapperCatalogue.getProductMapper().fullConversion(productService.update(id, product));
 	}
 
 	@Delete("/{id}")
