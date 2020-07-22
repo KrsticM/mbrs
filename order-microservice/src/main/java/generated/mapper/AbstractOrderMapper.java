@@ -6,7 +6,7 @@ import generated.dto.AbstractOrderDTO;
 import generated.model.Order;
 import handwritten.dto.OrderDTO;
 
-public class AbstractOrderMapper {
+public class AbstractOrderMapper implements Mapper<Order, AbstractOrderDTO>{
 	
 	protected AbstractMapperCatalogue mapperCatalogue;
 
@@ -23,7 +23,7 @@ public class AbstractOrderMapper {
 	public AbstractOrderDTO fullConversion(Order entity) {
 		AbstractOrderDTO ret = simpleConversion(entity);
 		ret.setItems(entity.getItems().stream().map(el -> mapperCatalogue.getOrderItemMapper().simpleConversion(el)).collect(Collectors.toSet()));
-		ret.setRestaurant(mapperCatalogue.restaurantFeignClient.getOne(entity.getRestaurant()));
+		ret.setRestaurant(mapperCatalogue.getRestaurantFeignClient().getOne(entity.getRestaurant()));
 		return ret;
 	}
 	

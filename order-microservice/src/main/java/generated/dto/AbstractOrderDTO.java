@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import generated.dto.feign.AbstractFeignRestaurantDTO;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,5 +1,6 @@
 package generated.dto;
 
+import generated.dto.feign.AbstractFeignProductDTO;
 import lombok.Getter;
 import lombok.Setter;
 

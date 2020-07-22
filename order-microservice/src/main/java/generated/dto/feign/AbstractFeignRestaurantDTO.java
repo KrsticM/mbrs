@@ -1,4 +1,4 @@
-package generated.dto;
+package generated.dto.feign;
 
 import lombok.Getter;
 import lombok.Setter;

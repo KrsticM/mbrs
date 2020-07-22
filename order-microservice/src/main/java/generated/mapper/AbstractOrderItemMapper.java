@@ -4,7 +4,7 @@ import generated.dto.AbstractOrderItemDTO;
 import generated.model.OrderItem;
 import handwritten.dto.OrderItemDTO;
 
-public class AbstractOrderItemMapper {
+public class AbstractOrderItemMapper implements Mapper<OrderItem, AbstractOrderItemDTO>{
 
 	protected AbstractMapperCatalogue mapperCatalogue;
 

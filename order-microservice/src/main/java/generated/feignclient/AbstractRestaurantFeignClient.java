@@ -1,6 +1,6 @@
 package generated.feignclient;
 
-import handwritten.dto.FeignRestaurantDTO;
+import handwritten.dto.feign.FeignRestaurantDTO;
 import io.micronaut.http.annotation.Get;
 
 /*

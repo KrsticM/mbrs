@@ -5,7 +5,7 @@ import java.util.Optional;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 
-import generated.dto.AbstractFeignRestaurantDTO;
+import generated.dto.feign.AbstractFeignRestaurantDTO;
 import generated.model.Order;
 import handwritten.feignclient.RestaurantFeignClient;
 import handwritten.repository.OrderRepository;
