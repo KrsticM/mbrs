@@ -49,7 +49,6 @@ public class OrderItem {
 	
 	@Getter
 	@Setter
-	@ManyToOne(fetch = FetchType.EAGER)	
-	@JoinColumn(name="order_id", referencedColumnName="id")
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)	
 	private Order order;
 }
